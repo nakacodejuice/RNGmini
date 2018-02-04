@@ -26,6 +26,7 @@ class DataExchange(Service):
     @rpc(String, String, Boolean,Boolean,Boolean, _returns=String)
     def ВыполнитьАлгоритмИПолучитьРезультат(ctx, Идентификатор, ПараметрыАлгоритма, СжиматьРезультат, РежимОтладки, JSON):
         print(Идентификатор)
+        return "ну привет"
 
 
 class ContainerService(Service):
