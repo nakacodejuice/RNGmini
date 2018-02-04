@@ -16,7 +16,6 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 import ImpersonalRNG.views
-import SoapLikeRNG.views
 from spyne.protocol.soap import Soap11
 from spyne.server.django import DjangoView
 from SoapLikeRNG.views import app, DataExchange
