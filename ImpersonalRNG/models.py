@@ -2,30 +2,28 @@ from django.db import models
 
 # Create your models here.
 
-class Accounts(models.Model):
-    lschet = models.IntegerField(primary_key=True)
-    surname = models.CharField(max_length=50)
-    name = models.CharField(max_length=50)
-    patronymic = models.CharField(max_length=50)
-    addressSTR = models.CharField(max_length=500)
-    region = models.CharField(max_length=50)
-    district = models.CharField(max_length=50)
-    city = models.CharField(max_length=50)
-    locality = models.CharField(max_length=50)
-    planstruct = models.CharField(max_length=50)
-    street = models.CharField(max_length=50)
-    house = models.CharField(max_length=50)
-    flat = models.CharField(max_length=50)
-    room = models.CharField(max_length=50)
-    person =  models.IntegerField();
-    space = models.FloatField(default=0)
+class Request(models.Model):
+
+    uid = models.CharField(max_length=36, primary_key=True)
+    method = models.CharField(max_length=100)
+    params = models.TextField()
+    compress = models.BooleanField()
+    debug = models.BooleanField()
+    json = models.BooleanField()
+    isdead = models.BooleanField(default=False)
+    datetime = models.DateTimeField('date created', auto_now_add=True)
+    isresponsed = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.lschet+'/'+self.surname+' '+self.name+ ' '+self.patronymic
+        return self.method+'/'+self.datetime
 
-class Settlements(models.Model):
-    lschet = models.IntegerField(primary_key=True)
-    Service = models.CharField(max_length=50)
+class Response(models.Model):
+
+    uid = models.CharField(max_length=36, primary_key=True)
+    resp = models.TextField()
+    method = models.CharField(max_length=100)
+    datetime = models.DateTimeField('date created', auto_now_add=True)
+    isresponsed = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.lschet+'/'+self.surname+' '+self.name+ ' '+self.patronymic
+        return self.method+'/'+self.datetime

@@ -19,17 +19,14 @@ import ImpersonalRNG.views
 from spyne.protocol.soap import Soap11
 from spyne.server.django import DjangoView
 from SoapLikeRNG.views import app, DataExchange
-
+from ImpersonalRNG.views import rest
 admin.autodiscover()
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^say_hello/', DjangoView.as_view(
+    url(r'^DataExchange/', DjangoView.as_view(
         services=[DataExchange], tns='http://www.dataexchange.org', name='DataExchangeSoapBinding',
         in_protocol=Soap11(validator='lxml'), out_protocol=Soap11())),
-    url(r'^say_hello_not_cached/', DjangoView.as_view(
-        services=[DataExchange], tns='http://www.dataexchange.org', name='DataExchangeSoapBinding',
-        in_protocol=Soap11(validator='lxml'), out_protocol=Soap11(),
-        cache_wsdl=False)),
+    url(r'^rest/', ImpersonalRNG.views.rest, name='rest'),
     url(r'^api/', DjangoView.as_view(application=app)),
 ]

@@ -1,20 +1,23 @@
-from django.shortcuts import render
+from django.http import HttpResponse
 from django.core.exceptions import ValidationError
 from django.db.utils import IntegrityError
 from django.views.decorators.csrf import csrf_exempt
-
+from django.core.exceptions import ObjectDoesNotExist
 from spyne.error import ResourceNotFoundError, ResourceAlreadyExistsError
 from spyne.server.django import DjangoApplication
 from spyne.model.primitive import Unicode, Integer,String, Boolean
-from spyne.model.complex import Iterable
+import time
+import uuid
 from spyne.service import Service
 from spyne.protocol.soap import Soap11
 from spyne.application import Application
 from spyne.decorator import rpc
 from spyne.util.django import DjangoComplexModel, DjangoService
+from ImpersonalRNG.models import Request, Response
 
 from SoapLikeRNG.models import FieldContainer
 
+TIMEOUT = 20 #20 сек
 
 class Container(DjangoComplexModel):
     class Attributes(DjangoComplexModel.Attributes):
@@ -25,9 +28,31 @@ class Container(DjangoComplexModel):
 class DataExchange(Service):
     @rpc(String, String, Boolean,Boolean,Boolean, _returns=String)
     def ВыполнитьАлгоритмИПолучитьРезультат(ctx, Идентификатор, ПараметрыАлгоритма, СжиматьРезультат, РежимОтладки, JSON):
-        print(Идентификатор)
-        return "ну привет"
-
+        uid = str(uuid.uuid4())
+        p = Request(uid=uid, method=Идентификатор, params = ПараметрыАлгоритма ,
+                    compress=СжиматьРезультат, debug=РежимОтладки, json=JSON)
+        p.save()
+        i=0
+        response = '';
+        while (i<TIMEOUT):
+            try:
+                QueryResponse = Response.objects.get(uid=uid)
+                response = QueryResponse[0]['resp']
+                break
+            except ObjectDoesNotExist:
+                print ("doesn't ready!!!")
+            i+=1;
+            time.sleep(1)
+        if(response==''):
+            response = HttpResponse(status=504)
+            try:
+                p.isdead = True
+            except ObjectDoesNotExist:
+                print ("doesn't exist!!!")
+        else:
+            p.isresponsed = True
+        p.save()
+        return response
 
 class ContainerService(Service):
     @rpc(Integer, _returns=Container)
