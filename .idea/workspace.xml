@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="656c1485-aa99-4864-8879-7f8bd623343b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+    <list default="true" id="656c1485-aa99-4864-8879-7f8bd623343b" name="Default" comment="new version without RNGdb">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ImpersonalRNG/admin.py" afterPath="$PROJECT_DIR$/ImpersonalRNG/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ImpersonalRNG/migrations/0001_initial.py" afterPath="$PROJECT_DIR$/ImpersonalRNG/migrations/0001_initial.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ImpersonalRNG/models.py" afterPath="$PROJECT_DIR$/ImpersonalRNG/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ImpersonalRNG/views.py" afterPath="$PROJECT_DIR$/ImpersonalRNG/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RNGmini/settings.py" afterPath="$PROJECT_DIR$/RNGmini/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RNGmini/urls.py" afterPath="$PROJECT_DIR$/RNGmini/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SoapLikeRNG/views.py" afterPath="$PROJECT_DIR$/SoapLikeRNG/views.py" />
     </list>
     <ignored path="RNGmini.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -519,11 +511,19 @@
       <option name="presentableId" value="Default" />
       <updated>1517693212899</updated>
     </task>
+    <task id="LOCAL-00001" summary="new version without RNGdb">
+      <created>1517868192698</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1517868192698</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2246596" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -534,7 +534,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27168575" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="manage.py@RNGmini" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.45171848" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="manage.py@RNGmini" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.45171848" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -577,6 +577,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="new version without RNGdb" />
+    <option name="LAST_COMMIT_MESSAGE" value="new version without RNGdb" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
