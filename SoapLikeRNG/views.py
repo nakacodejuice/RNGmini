@@ -44,11 +44,8 @@ class DataExchange(Service):
             i+=1;
             time.sleep(1)
         if(response==''):
-            response = HttpResponse(status=504)
-            try:
-                p.isdead = True
-            except ObjectDoesNotExist:
-                print ("doesn't exist!!!")
+            response = "Timeout"
+            p.isdead = True
         else:
             p.isresponsed = True
         p.save()

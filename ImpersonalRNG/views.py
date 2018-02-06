@@ -14,18 +14,21 @@ consignment = 3
 
 @csrf_exempt
 def rest(request):
+    resp = HttpResponse(status=404)
     if request.method == 'POST':
+        print (request.body.decode("utf-8"))
         if (request.body.decode("utf-8") != ''):
             received_json_data = json.loads(request.body.decode("utf-8-sig"))
             if(received_json_data['event']=='GetNewRequest'):
                 QueryRequest = Request.objects.filter(isdead=False,isresponsed=False)
                 i=1
                 datareq=[]
+                isnext = False
+                print (QueryRequest)
                 for Req in QueryRequest:
                     i+=1
-                    datareq.append({'uid':Req['uid'],'method':Req['method'],'params':Req['params'],
-                                    'compress':Req['compress'],'debug':Req['debug'],'json':Req['json']})
-                    isnext = False
+                    datareq.append({'uid':Req.uid,'method':Req.method,'params':Req.params,
+                                    'compress':Req.compress,'debug':Req.debug,'json':Req.json})
                     if(i==consignment):
                         isnext = True
                         break
@@ -35,6 +38,4 @@ def rest(request):
                 data =received_json_data['data']
                 p = Response(uid=data['uid'], method=data['method'], resp=data['resp'])
                 p.save()
-    else:
-      resp = HttpResponse(status=404)
     return resp

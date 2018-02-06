@@ -15,7 +15,7 @@ class Request(models.Model):
     isresponsed = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.method+'/'+self.datetime
+        return self.method+'/'+str(self.datetime)
 
 class Response(models.Model):
 
@@ -26,4 +26,4 @@ class Response(models.Model):
     isresponsed = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.method+'/'+self.datetime
+        return self.method+'/'+str(self.datetime)
