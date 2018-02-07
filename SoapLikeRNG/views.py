@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.http import HttpResponse
 from django.core.exceptions import ValidationError
 from django.db.utils import IntegrityError
@@ -29,7 +30,7 @@ class DataExchange(Service):
     @rpc(String, String, Boolean,Boolean,Boolean, _returns=String)
     def ВыполнитьАлгоритмИПолучитьРезультат(ctx, Идентификатор, ПараметрыАлгоритма, СжиматьРезультат, РежимОтладки, JSON):
         uid = str(uuid.uuid4())
-        p = Request(uid=uid, method=Идентификатор, params = ПараметрыАлгоритма ,
+        p = Request(uid=uid, method=(Идентификатор.encode('utf-8')).decode('utf-8-sig'), params = ПараметрыАлгоритма ,
                     compress=СжиматьРезультат, debug=РежимОтладки, json=JSON)
         p.save()
         i=0
