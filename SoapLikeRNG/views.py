@@ -30,21 +30,21 @@ class DataExchange(Service):
     @rpc(String, String, Boolean,Boolean,Boolean, _returns=String)
     def ВыполнитьАлгоритмИПолучитьРезультат(ctx, Идентификатор, ПараметрыАлгоритма, СжиматьРезультат, РежимОтладки, JSON):
         uid = str(uuid.uuid4())
-        p = Request(uid=uid, method=(Идентификатор.encode('utf-8')).decode('utf-8-sig'), params = ПараметрыАлгоритма ,
+        p = Request(uid=uid, method=Идентификатор, params = ПараметрыАлгоритма ,
                     compress=СжиматьРезультат, debug=РежимОтладки, json=JSON)
         p.save()
         i=0
-        response = '';
+        response = '!!!!!!';
         while (i<TIMEOUT):
             try:
                 QueryResponse = Response.objects.get(uid=uid)
-                response = QueryResponse[0]['resp']
+                response = QueryResponse.resp
                 break
             except ObjectDoesNotExist:
                 print ("doesn't ready!!!")
             i+=1;
-            time.sleep(1)
-        if(response==''):
+            time.sleep(0.1)
+        if(response=='!!!!!!'):
             response = "Timeout"
             p.isdead = True
         else:
