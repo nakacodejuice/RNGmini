@@ -18,7 +18,7 @@ from ImpersonalRNG.models import Request, Response
 
 from SoapLikeRNG.models import FieldContainer
 
-TIMEOUT = 20 #20 сек
+TIMEOUT = 200 #20 сек
 
 class Container(DjangoComplexModel):
     class Attributes(DjangoComplexModel.Attributes):

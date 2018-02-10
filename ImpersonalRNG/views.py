@@ -15,7 +15,7 @@ def rest(request):
         if (request.body.decode("utf-8") != ''):
             received_json_data = json.loads(request.body.decode("utf-8-sig"))
             if(received_json_data['event']=='GetNewRequest'):
-                QueryRequest = Request.objects.filter(isdead=False,isresponsed=False,datetime__gte=t.now()-timedelta(seconds=TIMEOUT+10))
+                QueryRequest = Request.objects.filter(isdead=False,isresponsed=False,inprogress = False,datetime__gte=t.now()-timedelta(seconds=TIMEOUT+10))
                 i=1
                 datareq=[]
                 isnext = False
@@ -24,9 +24,10 @@ def rest(request):
                     method =Req.method.encode('utf-8')
                     datareq.append({'uid':Req.uid,'method':Req.method,'params':Req.params,
                                     'compress':Req.compress,'debug':Req.debug,'json':Req.json})
+                    Req.inprogress = True;
+                    Req.save()
                     if(i==consignment):
                         isnext = True
-
                         break
                 data = {'data': datareq,'isnext':isnext}
                 #resp =JsonResponse(data,enc,False)

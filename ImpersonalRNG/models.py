@@ -13,9 +13,13 @@ class Request(models.Model):
     isdead = models.BooleanField(default=False)
     datetime = models.DateTimeField('date created', auto_now_add=True)
     isresponsed = models.BooleanField(default=False)
+    inprogress = models.BooleanField(default=False)
 
     def __str__(self):
         return self.method+'/'+str(self.datetime)
+
+    class Meta:
+        ordering = ["-datetime"]
 
 class Response(models.Model):
 
@@ -27,3 +31,6 @@ class Response(models.Model):
 
     def __str__(self):
         return self.method+'/'+str(self.datetime)
+
+    class Meta:
+        ordering = ["-datetime"]
