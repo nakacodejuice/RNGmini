@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'jg=s8#+x*%%@3cet-1nw5q!&y4zdl%v9zuf)q#&(_jf5v*(r90'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -77,25 +77,18 @@ WSGI_APPLICATION = 'RNGmini.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'rngmini',
-#         'USER': 'root',
-#         'PASSWORD': '',
-#         'HOST': 'localhost',
-#         'PORT': '',
-#         'OPTIONS': {
-#             'sql_mode': 'traditional',
-#         }
-#     }
-# }
+     'default': {
+         'ENGINE': 'django.db.backends.mysql',
+         'NAME': 'rngmini',
+         'USER': 'root',
+         'PASSWORD': '',
+         'HOST': 'localhost',
+         'PORT': '',
+        'OPTIONS': {
+             'sql_mode': 'traditional',
+         }
+     }
+ }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -128,6 +121,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = False
+FILE_UPLOAD_MAX_MEMORY_SIZE = 209715200 
+DATA_UPLOAD_MAX_MEMORY_SIZE = None 
 
 
 # Static files (CSS, JavaScript, Images)
